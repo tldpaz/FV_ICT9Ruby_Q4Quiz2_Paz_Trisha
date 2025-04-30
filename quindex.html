@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Score Analyzer</title>
+  <style>
+    h1 {
+      background-color: #c4ecec; 
+      border: 3px solid #007c91; 
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 12px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background-color: #f0f8ff;
+    }
+    .subject {
+      display: inline-block;
+      margin: 20px;
+    }
+    .subject input {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .subject-img {
+      width: 220px;       
+      height: 360px;      
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+    #getRating {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+    label {
+      font-size: 35px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Score Analyzer</h1>
+
+  <details ontoggle="toggleMessage()">
+    <summary>Click Me</summary>
+    <p>Enter your grades in the following subjects.</p>
+  </details>
+
+ <div class="subject">
+  <label>SCIENCE</label>
+  <br>
+  <img src="https://static.wixstatic.com/media/b6a543_4a6c63aa384542f3af11ebe63616055f~mv2.jpeg/v1/fill/w_952,h_1212,al_c,q_90/b6a543_4a6c63aa384542f3af11ebe63616055f~mv2.jpeg" class="subject-img">
+  <input id="science" type="number" placeholder="e.g. 85" />
+</div>
+
+<div class="subject">
+  <label>MATHEMATICS</label>
+  <br>
+  <img src="https://thumbs.dreamstime.com/z/mathematics-vector-cover-basis-registration-textbooks-notebooks-49368638.jpg" class="subject-img">
+  <input id="math" type="number" placeholder="e.g. 90" />
+</div>
+
+<div class="subject">
+  <label>ENGLISH</label>
+  <br>
+  <img src="https://th.bing.com/th/id/OIP.T8JhiOm6XF7j4rhqgJ_XfwHaKm?rs=1&pid=ImgDetMain" class="subject-img">
+  <input id="english" type="number" placeholder="e.g. 88" />
+</div>
+
+
+  <br><br>
+  <button id="getRating" onclick="getRating()">Get Rating</button>
+
+  <br>
+  <br>
+
+  <p><i>Note: Grading Criteria and Equivalents can vary depending on school or district.</i></p>
+<br>
+  <footer>@Trisha Lorainne D. Paz</footer>
+
+  <script>
+    function toggleMessage() {
+      console.log("Details toggled!");
+    }
+
+    function getRating() {
+      var s = parseFloat(document.getElementById("science").value);
+      var m = parseFloat(document.getElementById("math").value);
+      var e = parseFloat(document.getElementById("english").value);
+
+      var avg = Math.round((s + m + e) / 3 * 100) / 100; // Rounded to 2 decimal places
+
+      var rating = "";
+
+      switch (true) {
+        case (avg >= 94 && avg <= 100):
+          rating = "Excellent";
+          break;
+        case (avg >= 87 && avg < 94):
+          rating = "Above Satisfactory";
+          break;
+        case (avg >= 80 && avg < 87):
+          rating = "Satisfactory";
+          break;
+        case (avg >= 75 && avg < 80):
+          rating = "Needs Improvement";
+          break;
+        case (avg >= 70 && avg < 75):
+          rating = "Poor";
+          break;
+        default:
+          rating = "Failing or Invalid Input";
+      }
+
+      alert("Your average is " + avg + " - " + rating);
+    }
+  </script>
+
+</body>
+</html>
+

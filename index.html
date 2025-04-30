@@ -93,9 +93,9 @@
     }
 
     function getRating() {
-      var s = parseFloat(document.getElementById("science").value);
-      var m = parseFloat(document.getElementById("math").value);
-      var e = parseFloat(document.getElementById("english").value);
+      var s = Number(document.getElementById("science").value);
+      var m = Number(document.getElementById("math").value);
+      var e = Number(document.getElementById("english").value);
 
       var avg = Math.round((s + m + e) / 3 * 100) / 100; // Rounded to 2 decimal places
 
